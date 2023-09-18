@@ -40,7 +40,7 @@ Block task
                     this,
                     item,
                     reference_time,
-                    practice.num_cycles()
+                    practice.num_cycles
                     );
             }
 
@@ -75,7 +75,6 @@ Block task
         {
             test_page.show_cursor();
             test_page.cleanup();
-            test_output_save_and_clear(test_output);
         }
 
         Trial stimulus
