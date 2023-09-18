@@ -47,6 +47,8 @@ import std_blank_page;
 
 import texts_en;
 
+import io_beexybox;
+
 import test::task;
 import test::shuffle;
 
@@ -68,7 +70,6 @@ Experiment experiment
 
     on_event:exit()
     {
-        control.close();
         terminate;
     }
 
