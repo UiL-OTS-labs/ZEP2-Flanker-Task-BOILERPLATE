@@ -105,7 +105,7 @@ Block task
                 output.expected_side = test_page.response.value;
                 output.correct = test_page.response.correct;
 
-                test_output_append(test_output, output);
+                test_output_append(output);
             }
         }
     }
