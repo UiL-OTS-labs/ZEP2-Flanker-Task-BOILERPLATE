@@ -50,7 +50,7 @@ import texts_en;
 import test::task;
 import test::shuffle;
 
-const string EXPERIMENT_VERSION = "2.0";
+const int EXPERIMENT_VERSION = 2;
 
 Experiment experiment
 {
