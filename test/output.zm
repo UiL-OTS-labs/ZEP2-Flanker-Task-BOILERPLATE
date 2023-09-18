@@ -31,26 +31,19 @@ record TestOutput
 
 //------------------------------------------------------------------------------
 
-TestOutput[..] test_output;
-
 // Appends one row of data to test phase output table.
-void test_output_append(TestOutput[] test_output, TestOutput data)
+void test_output_append(TestOutput data)
 {
-    test_output.size = test_output.size + 1;
-    test_output[test_output.size-1] = data;
+    expdb.add_trial_data_record(namespace_name, "1", "TestResults");
+
+    expdb.set_trial_data_int_field("trialnum", data.trial_nr);
+    expdb.set_trial_data_int_field("id", data.id);
+    expdb.set_trial_data_int_field("isi", data.inter_stimulus_interval);
+    expdb.set_trial_data_enum_field("congruence", string(data.congruence));
+    expdb.set_trial_data_int_field("rt", data.rt);
+    expdb.set_trial_data_enum_field("selected_side", string(data.selected_side));
+    expdb.set_trial_data_enum_field("expected_side", string(data.expected_side));
+    expdb.set_trial_data_int_field("correct", data.correct);
 }
 
 
-// Writes test phase output table contents to CSV file and clears the table.
-void test_output_save_and_clear(
-    TestOutput[] test_output,
-    string header_line = "Results",
-    int table_nr = 1
-    )
-{
-    // Append table to CSV file (create if non-existent). The filename 
-    // format is: <dbname>/<dbnum>/<expname>/ses<sesid>-<tblnum>.csv
-    test_output.append(expdb.experiment.session.table_filename(table_nr), 
-        header_line);
-    test_output.size = 0;
-}
