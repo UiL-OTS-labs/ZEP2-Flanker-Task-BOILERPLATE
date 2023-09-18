@@ -50,14 +50,15 @@ import texts_en;
 import test::task;
 import test::shuffle;
 
+const string EXPERIMENT_VERSION = "2.0";
+
 Experiment experiment
 {
 
     on_event:entry()
     {
         show_test_windows();
-        control.button_box.open();
-        control.button_box.enable_all_buttons(CONTINUE);
+        control.enable_all_buttons(CONTINUE);
 
         if (test::load_stimuli() != OK)
             terminate;
@@ -67,7 +68,7 @@ Experiment experiment
 
     on_event:exit()
     {
-        control.button_box.close();
+        control.close();
         terminate;
     }
 
